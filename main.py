@@ -31,13 +31,14 @@ if log_file_path.exists():
         path_search_result = path_regex.search(line)
         if path_search_result is not None:
             path = Path(root_path + path_search_result.group(1))
-            if path.exists():
+            if path.exists() and not path_search_result.group(1) in result_list:
                 result_list.append(path_search_result.group(1))
-
     log_file.close()
 
-    result_file = open(result_file_path, 'a')
     result_list.sort()
+    # print(*result_list, sep='\n')
+
+    result_file = open(result_file_path, 'a')
     for path_string in result_list:
         result_file.write(path_string)
         result_file.write('\n')
