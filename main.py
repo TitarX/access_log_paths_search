@@ -42,5 +42,4 @@ if log_file_path.exists():
     for path_string in result_list:
         result_file.write(path_string)
         result_file.write('\n')
-
     result_file.close()
